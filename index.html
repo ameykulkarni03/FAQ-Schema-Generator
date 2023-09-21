@@ -7,22 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>FAQ Schema Generator</h1>
     <div class="container">
-        <h1>FAQ Schema Generator</h1>
+        <div class = "con-1">
+            <input type="text" id="question" placeholder="Question">
 
-        <label for="question">Question:</label>
-        <input type="text" id="question">
+            <input type="text" id="answer" placeholder="Answer">
 
-        <label for="answer">Answer:</label>
-        <input type="text" id="answer">
-
-        <button onclick="generateSchema()">Generate JSON-LD</button>
-
-        <textarea id="schema-code" readonly>        </textarea>
-
-        <button onclick="copyToClipboard()">Copy FAQ Schema</button>
-        <!-- <button onclick="testInSDTT()">Test in SDTT</button>
-        <button onclick="sendToManager()">Send to Manager Fixer</button> -->
+            <button onclick="generateSchema()">Generate JSON-LD</button>
+        </div>
+        
+        <div class="con-2">
+            <textarea id="schema-code"></textarea>
+        </div>
+        
     </div>
 
     <script src="script.js"></script>
