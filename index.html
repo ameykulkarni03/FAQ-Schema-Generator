@@ -14,17 +14,18 @@
             <!-- Initial question and answer pair -->
                 <label for="">FAQs</label>
                 <div class="faq-pair">
-                    
-                    <input type="text" class="question" placeholder="Enter Question" required>
-                    <input class="answer" placeholder="Enter Answer" required></textarea>
+                    <input type="text" id = "question" class="question" placeholder="Enter Question" required>
+                    <input id = "answer" class="answer" placeholder="Enter Answer" required></textarea>
                 </div>
             </div>
             <button type="button" id="add-faq">Add FAQ</button>
-            <button type="button" id="generate-schema">Generate Schema</button>
+            <button type="button" onclick="generateSchema()" id="generate-schema">Generate Schema</button>
         </form>
         <div class="display">
             <label for="schema-code">JSON-LD FAQ Schema Code</label>
-            <textarea id="schema-code"></textarea>
+            <div id="schema-code" class="textarea-like">
+                
+            </div>
         </div>
         
     </div>
