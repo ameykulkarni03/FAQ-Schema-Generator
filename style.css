@@ -45,7 +45,6 @@ button {
     border-radius: 8px;
     transition: all 500ms ease;
     padding: 16px 48px;
-    
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -86,8 +85,30 @@ button:hover {
 
 .faq-pair {
     margin-bottom: 50px;
+    position: relative;
+}
+
+button.delete-button {
+    position: absolute;
+    top: 50%;
+    right: 5px; /* Adjust the right distance as needed */
+    transform: translateY(-50%);
 }
 
 label {
     color: #ffffff;
+}
+
+form {
+    width: 500px;
+}
+
+/* Style the <div> to look like a textarea */
+.textarea-like {
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-family: monospace; /* Use a monospace font for code-like appearance */
+    white-space: pre-wrap; /* Preserve line breaks */
+    min-height: 100px; /* Adjust the height as needed */
+    overflow-y: auto; /* Add scrollbars when content overflows */
 }
