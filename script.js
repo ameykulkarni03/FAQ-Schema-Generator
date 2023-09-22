@@ -1,6 +1,3 @@
-// JavaScript code for FAQ Schema Generator
-
-// Function to add a new FAQ pair
 function addFAQPair() {
     const faqPairs = document.getElementById('faq-pairs');
     const faqPair = document.querySelector('.faq-pair'); // Get the first pair
@@ -23,39 +20,47 @@ function addFAQPair() {
 
 // Function to generate JSON-LD schema
 function generateSchema() {
-    const faqPairs = document.querySelectorAll('.faq-pair');
-    const faqs = [];
+    
+    const question = document.getElementById('question').value;
+  
+    const answer = document.getElementById('answer').value;
+    
+    // Validate input
+    if (!question || !answer) {
+        alert("Please enter both a question and an answer.");
+        return;
+    }
 
-    // Iterate through each FAQ pair and add them to the array
-    faqPairs.forEach(faqPair => {
-        const question = faqPair.querySelector('.question').value;
-        const answer = faqPair.querySelector('.answer').value;
-
-        if (question && answer) {
-            faqs.push({
-                "@type": "Question",
-                "name": question,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": answer
+    // Create the JSON-LD schema as an array with a single item
+    const schema = 
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": question,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": answer
+                    }
                 }
-            });
-        }
-    });
+            ]
+        };
+   
+    // Convert the schema to a JSON string
+    const schemaJson = JSON.stringify(schema, null, 2);
 
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs
-    };
-
-    // Display the JSON-LD code
+    // Generate the HTML markup with the <script> tag
+    const scriptTag = `<script type="application/ld+json">${schemaJson}</script>`;
+    
+    // Display the generated HTML code
     const schemaCode = document.getElementById('schema-code');
-    schemaCode.textContent = JSON.stringify(schema, null, 2);
+    schemaCode.textContent = scriptTag;
 }
 
+// Event listener to trigger schema generation
+const clicked = document.getElementById('generate-schema')
+clicked.addEventListener('click', generateSchema);
 // Event listener to trigger FAQ pair addition
 document.getElementById('add-faq').addEventListener('click', addFAQPair);
-
-// Event listener to trigger schema generation
-document.getElementById('generate-schema').addEventListener('click', generateSchema);
